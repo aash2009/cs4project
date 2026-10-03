@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.mjs",
   "scripts": {
-    "build": "cd frontend && npm run build"
+    "build": "cd frontend && npm run build",
+    "start": "npm run build && node index.mjs"
   },
   "keywords": [],
   "author": "",
