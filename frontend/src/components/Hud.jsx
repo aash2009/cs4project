@@ -1,6 +1,6 @@
 import { formatTime } from "../lib/format";
 
-export default function Hud({ levels, levelIndex, target, elapsedMs, clicks }) {
+export default function Hud({ levels, levelIndex, target, elapsedMs, clicks, busy, onRestart }) {
   return (
     <header className="hud">
       <div className="hud-stats">
@@ -16,15 +16,16 @@ export default function Hud({ levels, levelIndex, target, elapsedMs, clicks }) {
           <span className="stat-label">Target</span>
           <span className="stat-value">#{target}</span>
         </div>
+        <button className="ghost-btn" onClick={onRestart} disabled={busy}>
+          Restart
+        </button>
       </div>
 
       <ol className="trail">
         {levels.map((lvl, i) => (
           <li
             key={lvl}
-            className={
-              i < levelIndex ? "done" : i === levelIndex ? "active" : ""
-            }
+            className={i < levelIndex ? "done" : i === levelIndex ? "active" : ""}
           >
             #{lvl}
           </li>
