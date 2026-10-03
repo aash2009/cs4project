@@ -1,7 +1,10 @@
 import { setupAPI } from './backend/api.mjs';
 import exp from 'express';
 import winston from 'winston';
-import { readFileSync } from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const logger = winston.createLogger({
     format: winston.format.simple(),
@@ -18,9 +21,9 @@ const port = 8080;
 // Backend
 setupAPI(app, logger);
 
-// Frontend
-app.use('/', exp.static('frontend'));
+// Frontend (the built version)
+app.use('/', exp.static(path.join(__dirname, 'frontend', 'dist')));
 
 app.listen(port, host, () => {
     logger.info(`Listening on ${host}:${port}`);
-})
+});
