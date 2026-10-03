@@ -25,7 +25,6 @@ export default function App() {
   }
 
   const { page } = game;
-  const isDud = !LEVELS.includes(page.tag);
 
   return (
     <div className="app">
@@ -41,16 +40,21 @@ export default function App() {
 
       <main className="page">
         <div className="page-head">
-          <h1>#{page.tag}</h1>
-          <p>
-            {page.posts.length} {page.posts.length === 1 ? "post" : "posts"}
-          </p>
+          <div className="tag-avatar">
+            <span>#</span>
+          </div>
+          <div>
+            <h1>#{page.tag}</h1>
+            <p>
+              <b>{page.posts.length}</b> {page.posts.length === 1 ? "post" : "posts"}
+            </p>
+          </div>
         </div>
 
         {page.posts.length === 0 ? (
           <p className="empty">No posts under #{page.tag}. Hit Restart to try again.</p>
         ) : (
-          <section className={`grid ${isDud ? "grid-single" : ""}`}>
+          <section className="grid">
             {page.posts.map((post) => (
               <PostCard key={post.id} post={post} onOpen={game.openPostById} />
             ))}
