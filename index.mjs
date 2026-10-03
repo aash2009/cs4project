@@ -1,3 +1,23 @@
-import { startAPI } from './backend/api.mjs';
+import { setupAPI } from './backend/api.mjs';
+import exp from 'express';
+import winston from 'winston';
 
-startAPI(8080);
+const logger = winston.createLogger({
+    format: winston.format.simple(),
+    transports: [
+        new winston.transports.Console()
+    ]
+});
+
+const app = exp();
+
+const host = '127.0.0.1';
+const port = 8080;
+
+// Backend
+setupAPI(app, logger);
+
+
+app.listen(port, host, () => {
+    logger.info(`Listening on ${host}:${port}`);
+})
