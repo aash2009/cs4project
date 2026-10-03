@@ -12,7 +12,7 @@ const logger = winston.createLogger({
 
 const app = exp();
 const port = 8080;
-const index = JSON.parse(await fs.readFile('./posts/index.json'));
+const index = JSON.parse(await fs.readFile('./backend/posts/index.json'));
 
 const goLog = (req, res, next) => {
     logger.info(`Coming from ${req.ip}`);
@@ -61,7 +61,7 @@ api.get('/image/:imgid', (req, res) => {
     let imgid = req.params.imgid;
 
     res.setHeader("content-type", "image/png");
-    res.send(readFileSync(`./posts/images/${imgid}.png`));
+    res.send(readFileSync(`./backend/posts/images/${imgid}.png`));
 });
 
 
