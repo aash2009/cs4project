@@ -1,4 +1,5 @@
 import { useGame } from "./hooks/useGame";
+import { LEVELS, TARGET_TAG } from "./config";
 import Hud from "./components/Hud";
 import PostCard from "./components/PostCard";
 import PostModal from "./components/PostModal";
@@ -18,22 +19,24 @@ export default function App() {
         elapsedMs={game.elapsedMs}
         clicks={game.clicks}
         path={game.path}
-        onRestart={game.reset}
+        onRestart={game.restart}
       />
     );
   }
 
   const { page } = game;
-  const isDud = page.kind === "dud";
+  const isDud = !LEVELS.includes(page.tag);
 
   return (
     <div className="app">
       <Hud
-        levels={game.levels}
+        levels={LEVELS}
         levelIndex={game.levelIndex}
-        target={game.target}
+        target={TARGET_TAG}
         elapsedMs={game.elapsedMs}
         clicks={game.clicks}
+        busy={game.busy}
+        onRestart={game.restart}
       />
 
       <main className="page">
@@ -44,13 +47,15 @@ export default function App() {
           </p>
         </div>
 
-        <section className={`grid ${isDud ? "grid-single" : ""}`}>
-          {page.posts.map((post) => (
-            <PostCard key={post.id} post={post} onOpen={game.openPostById} />
-          ))}
-        </section>
-
-        {game.error && <p className="error">{game.error}</p>}
+        {page.posts.length === 0 ? (
+          <p className="empty">No posts under #{page.tag}. Hit Restart to try again.</p>
+        ) : (
+          <section className={`grid ${isDud ? "grid-single" : ""}`}>
+            {page.posts.map((post) => (
+              <PostCard key={post.id} post={post} onOpen={game.openPostById} />
+            ))}
+          </section>
+        )}
       </main>
 
       {game.openPost && (
@@ -58,6 +63,7 @@ export default function App() {
           post={game.openPost}
           currentTag={page.tag}
           busy={game.busy}
+          error={game.error}
           onClose={game.closePost}
           onTagClick={game.selectTag}
         />
