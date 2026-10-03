@@ -1,0 +1,38 @@
+{
+    "posts": [
+        {
+            "id": 0,
+            "author": "cay.converse",
+            "image_id": 0,
+            "hashtags": [
+                "johnpork",
+                "brainrot",
+                "lbjames"
+            ]
+        },
+        {
+            "id": 1,
+            "author": "the_aashpanda",
+            "image_id": 1,
+            "hashtags": [
+                "pranks",
+                "funny",
+                "job",
+                "satisfying",
+                "meme",
+                "relaxing"
+            ]
+        },
+        {
+            "id": 2,
+            "author": "Hearts_n_stuff",
+            "image_id": 2,
+            "hashtags": [
+                "aspiring",
+                "relaxing",
+                "quote",
+                "daily"
+            ]
+        }
+    ]
+}
