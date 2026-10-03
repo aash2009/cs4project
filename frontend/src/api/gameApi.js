@@ -1,57 +1,40 @@
-import { request } from "./client";
-import * as mock from "./mockBackend";
+import { ApiError, BASE_URL, request } from "./client";
 
-const USE_MOCK = import.meta.env.VITE_USE_MOCK !== "false";
+const postCache = new Map();
+
+export function imageUrl(imageId) {
+  // The backend appends ".png" itself
+  return `${BASE_URL}/image/${encodeURIComponent(imageId)}`;
+}
+
+// Normalizes a backend post into the shape the UI uses.
+async function getPost(id, signal) {
+  const key = String(id);
+  if (postCache.has(key)) return postCache.get(key);
+
+  const raw = await request(`/post/${encodeURIComponent(key)}`, { signal });
+  // The backend returns 200 with { error } for unknown ids
+  if (!raw || raw.error) {
+    throw new ApiError(raw?.error ?? "Post not found", 404, raw);
+  }
+
+  const post = {
+    id: String(raw.id), // string so id 0 is never falsy
+    author: raw.author,
+    imageUrl: imageUrl(raw.image_id),
+    tags: raw.hashtags ?? [],
+  };
+  postCache.set(key, post);
+  return post;
+}
 
 /**
- * BACKEND CONTRACT (used when VITE_USE_MOCK=false)
- *
- * POST /runs
- *   -> { runId, levels: string[], target: string, page: Page }
- *
- * GET  /hashtags/:tag
- *   -> Page
- *
- * POST /runs/:runId/navigate
- *   body: { fromTag, postId, clickedTag }
- *   -> { type: "advance" | "dud" | "main" | "same" | "win", page: Page }
- *
- * POST /runs/:runId/finish
- *   body: { clicks, elapsedMs, path }
- *   -> { ok: true }
- *
- * Page = {
- *   tag: string,                  // without "#"
- *   level: string,                // the level hashtag this page belongs to
- *   kind: "level" | "dud",
- *   posts: [{ id: string, imageUrl: string, tags: string[] }]  // 3 tags each
- * }
+ * Loads a hashtag page: GET /hashtag/:tag, then GET /post/:id for each id.
+ * Returns { tag, posts }. Unknown hashtags come back as an empty posts array.
  */
-
-export function startRun(signal) {
-  if (USE_MOCK) return mock.startRun();
-  return request("/runs", { method: "POST", signal });
-}
-
-export function getHashtag(tag, signal) {
-  if (USE_MOCK) return mock.getHashtag(tag);
-  return request(`/hashtags/${encodeURIComponent(tag)}`, { signal });
-}
-
-export function navigate(runId, { fromTag, postId, clickedTag }, signal) {
-  if (USE_MOCK) return mock.navigate({ fromTag, postId, clickedTag });
-  return request(`/runs/${encodeURIComponent(runId)}/navigate`, {
-    method: "POST",
-    body: { fromTag, postId, clickedTag },
-    signal,
-  });
-}
-
-export function finishRun(runId, payload, signal) {
-  if (USE_MOCK) return mock.finishRun();
-  return request(`/runs/${encodeURIComponent(runId)}/finish`, {
-    method: "POST",
-    body: payload,
-    signal,
-  });
+export async function getHashtagPage(tag, signal) {
+  const data = await request(`/hashtag/${encodeURIComponent(tag)}`, { signal });
+  const ids = data?.postids ?? [];
+  const posts = await Promise.all(ids.map((id) => getPost(id, signal)));
+  return { tag: data?.hashtag ?? tag, posts };
 }
