@@ -2,36 +2,284 @@
     "posts": [
         {
             "id": 0,
-            "author": "cay.converse",
-            "image_id": 0,
+            "author": "alex_wander",
+            "image_id": 1,
             "hashtags": [
-                "johnpork",
-                "brainrot",
-                "lbjames"
+                "travel",
+                "nature",
+                "photography"
             ]
         },
         {
             "id": 1,
-            "author": "the_aashpanda",
-            "image_id": 1,
+            "author": "chef_kenji",
+            "image_id": 7,
             "hashtags": [
-                "pranks",
-                "funny",
-                "job",
-                "satisfying",
-                "meme",
-                "relaxing"
+                "food",
+                "cooking",
+                "sushi"
             ]
         },
         {
             "id": 2,
-            "author": "Hearts_n_stuff",
+            "author": "byte_crafter",
+            "image_id": 22,
+            "hashtags": [
+                "coding",
+                "technology",
+                "science",
+                "dilmelting"
+            ]
+        },
+        {
+            "id": 3,
+            "author": "retro_samurai",
+            "image_id": 18,
+            "hashtags": [
+                "gaming",
+                "anime",
+                "retro"
+            ]
+        },
+        {
+            "id": 4,
+            "author": "GOAT_Central",
+            "image_id": 21,
+            "hashtags": [
+                "lbjames",
+                "sports",
+                "basketball"
+            ]
+        },
+        {
+            "id": 5,
+            "author": "paws_and_claws",
+            "image_id": 11,
+            "hashtags": [
+                "cats",
+                "dogs",
+                "funny"
+            ]
+        },
+        {
+            "id": 6,
+            "author": "FlowerOTD",
             "image_id": 2,
             "hashtags": [
-                "aspiring",
-                "relaxing",
+                "flowers",
+                "nature",
+                "art"
+            ]
+        },
+        {
+            "id": 7,
+            "author": "sakura_walks",
+            "image_id": 12,
+            "hashtags": [
+                "japan",
+                "travel",
+                "culture"
+            ]
+        },
+        {
+            "id": 8,
+            "author": "astro_voyager",
+            "image_id": 26,
+            "hashtags": [
+                "space",
+                "universe",
+                "science"
+            ]
+        },
+        {
+            "id": 9,
+            "author": "soundwave_vibes",
+            "image_id": 14,
+            "hashtags": [
+                "music",
+                "art",
+                "culture"
+            ]
+        },
+        {
+            "id": 10,
+            "author": "iron_pulse",
+            "image_id": 16,
+            "hashtags": [
+                "fitness",
+                "health",
+                "motivation"
+            ]
+        },
+        {
+            "id": 11,
+            "author": "cozy_reader",
+            "image_id": 27,
+            "hashtags": [
+                "coffee",
+                "books",
+                "life"
+            ]
+        },
+        {
+            "id": 12,
+            "author": "daily_inspire",
+            "image_id": 15,
+            "hashtags": [
                 "quote",
-                "daily"
+                "motivation",
+                "dreams"
+            ]
+        },
+        {
+            "id": 13,
+            "author": "crypto_venture",
+            "image_id": 3,
+            "hashtags": [
+                "crypto",
+                "finance",
+                "buisness",
+                "startup"
+            ]
+        },
+        {
+            "id": 14,
+            "author": "style_atelier",
+            "image_id": 17,
+            "hashtags": [
+                "fashion",
+                "style",
+                "design"
+            ]
+        },
+        {
+            "id": 15,
+            "author": "blue_planet",
+            "image_id": 8,
+            "hashtags": [
+                "ocean",
+                "climate",
+                "nature"
+            ]
+        },
+        {
+            "id": 16,
+            "author": "thames_echoes",
+            "image_id": 20,
+            "hashtags": [
+                "germany",
+                "travel",
+                "history"
+            ]
+        },
+        {
+            "id": 17,
+            "author": "catalan_sun",
+            "image_id": 10,
+            "hashtags": [
+                "barcelona",
+                "sports",
+                "travel"
+            ]
+        },
+        {
+            "id": 18,
+            "author": "mrdogman",
+            "image_id": 23,
+            "hashtags": [
+                "dogs",
+                "life",
+                "style"
+            ]
+        },
+        {
+            "id": 19,
+            "author": "spice_trails",
+            "image_id": 19,
+            "hashtags": [
+                "india",
+                "culture",
+                "food"
+            ]
+        },
+        {
+            "id": 20,
+            "author": "chuckle_central",
+            "image_id": 0,
+            "hashtags": [
+                "comedy",
+                "funny",
+                "happy"
+            ]
+        },
+        {
+            "id": 21,
+            "author": "cinema_scenes",
+            "image_id": 5,
+            "hashtags": [
+                "movies",
+                "history",
+                "retro"
+            ]
+        },
+        {
+            "id": 22,
+            "author": "botanical_bliss",
+            "image_id": 2,
+            "hashtags": [
+                "plants",
+                "garden",
+                "nature"
+            ]
+        },
+        {
+            "id": 23,
+            "author": "city_patrol",
+            "image_id": 13,
+            "hashtags": [
+                "police",
+                "news",
+                "people"
+            ]
+        },
+        {
+            "id": 24,
+            "author": "campus_mind",
+            "image_id": 25,
+            "hashtags": [
+                "school",
+                "science",
+                "books"
+            ]
+        },
+        {
+            "id": 25,
+            "author": "hearth_and_home",
+            "image_id": 6,
+            "hashtags": [
+                "family",
+                "happy",
+                "life"
+            ]
+        },
+        {
+            "id": 26,
+            "author": "skyscape_observer",
+            "image_id": 9,
+            "hashtags": [
+                "weather",
+                "parks",
+                "nature"
+            ]
+        },
+        {
+            "id": 27,
+            "author": "NYglazer",
+            "image_id": 3,
+            "hashtags": [
+                "pizza",
+                "food",
+                "cooking"
             ]
         }
     ]
